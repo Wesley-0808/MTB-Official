@@ -41,15 +41,15 @@ export const defaultConfig: DefaultConfig = {
           children: [
             {
               label: '成片库',
-              href: '//10.3.146.11',
+              href: '//i.sdzzmtb.cn',
             },
             {
               label: '媒体库',
-              href: '//10.3.146.11',
+              href: '//i.sdzzmtb.cn',
             },
             {
               label: '德育处资源库',
-              href: '//10.3.146.11',
+              href: '//i.sdzzmtb.cn',
             },
           ],
         },
@@ -58,7 +58,7 @@ export const defaultConfig: DefaultConfig = {
           children: [
             {
               label: '对外共享',
-              href: '//10.3.146.11',
+              href: '//i.sdzzmtb.cn',
             },
           ],
         },

@@ -273,8 +273,9 @@ import {
   fileIsVideo,
   fileIsXls,
   fileIsZip,
-  isInternet,
+  isInternet as isSdzzInternet,
   isMTBInternet,
+  isInternal as checkInternal,
 } from "@utils/common";
 import { HeaderData } from "@/src/types";
 
@@ -564,12 +565,12 @@ const handleCopyFileDownloadUrl = (fileEx: any) => {
 // 点击下载
 const handleFileDownload = (row: any) => {
   const { filename } = row;
-  const filePath = route.query?.dir ?? dir.value;
+  const filePath = route.query?.dir || dir.value || "/";
   const loading = MessagePlugin.loading("加载中...");
 
   useFetch({
     url: "/netdisk/getDownloadUrl",
-    success: (res: any) => {
+    success: async (res: any) => {
       const result = JSON.parse(res);
       if (result?.errcode !== 0) {
         NotifyPlugin.error({
@@ -579,14 +580,16 @@ const handleFileDownload = (row: any) => {
         return;
       }
       const { data } = result;
+      const isInternal =
+        (await checkInternal()) || isSdzzInternet() || isMTBInternet();
       const ip = isMTBInternet()
         ? data.internal_ip
-        : isInternet()
+        : isInternal
         ? data.out_ip
         : null;
       const port = isMTBInternet()
         ? data.internal_port
-        : isInternet()
+        : isInternal
         ? data.out_port
         : null;
       if (!ip || !port) {
@@ -601,6 +604,7 @@ const handleFileDownload = (row: any) => {
       var a = document.createElement("a");
       a.href = downloadUrl;
       a.download = filename;
+      a.target = "_blank";
       a.click();
       const content = () => {
         return (

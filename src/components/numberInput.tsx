@@ -1,6 +1,17 @@
 import { defineComponent, onMounted, ref, toRefs } from 'vue';
 import '@style/numberInput.scss';
 
+export const getLastFilledIndex = (value: string) => {
+  if (value.length > 0) {
+    return value.length - 1;
+  }
+  return 0;
+};
+
+export const getActiveInputIndex = (value: string) => {
+  return getLastFilledIndex(value);
+};
+
 export default defineComponent({
   name: 'NumberInput',
   props: {
@@ -29,15 +40,10 @@ export default defineComponent({
       // 没有实例
       if (!inputRef.value) return;
       inputRef.value.focus();
-      // TODO：暂时不做中间修改内容的功能
-      console.info('select', index);
-      inputCursorPosition.value = inputValue.value.length - 1;
-      inputRef.value.setSelectionRange(inputValue.value.length - 1, inputValue.value.length);
-      // // 输入内容长度未达标
-      // if (inputValue.value.length < total.value) return;
-      // console.log('setCursorPosition', index, inputValue.value.length < total.value);
-      // inputRef.value.setSelectionRange(index, index + 1);
-      // inputCursorPosition.value = index;
+
+      const nextIndex = inputValue.value.length > 0 ? inputValue.value.length - 1 : index;
+      inputCursorPosition.value = nextIndex;
+      inputRef.value.setSelectionRange(nextIndex, nextIndex + 1);
     };
 
     const handleInputFocus = () => {
@@ -49,11 +55,12 @@ export default defineComponent({
     };
 
     const renderItem = () => {
+      const activeIndex = getActiveInputIndex(inputValue.value);
       const items = Array.from({ length: total.value }, (_, index) => (
         <div
           class={[
             'codeItem',
-            (inputValue.value.length === index || inputCursorPosition.value === index) && inputFocus.value && 'active',
+            inputFocus.value && activeIndex === index && 'active',
             inputValue.value[index] && 'hasvalue',
           ]}
           onClick={() => setCursorPosition(index)}

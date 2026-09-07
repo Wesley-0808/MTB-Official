@@ -19,15 +19,15 @@ import { FooterData, FooterItem } from '../types';
 //   {
 //     title: '媒体部',
 //     links: [
-//       { label: '介绍', href: 'http://10.3.146.11/about-MTB' },
-//       { label: '加入我们', href: 'http://10.3.146.11/join-us' },
+//       { label: '介绍', href: 'https://i.sdzzmtb.cn/about-MTB' },
+//       { label: '加入我们', href: 'https://i.sdzzmtb.cn/join-us' },
 //       { label: '<广告位招租>', href: 'javascript:void(0)' },
 //     ],
 //   },
 //   {
 //     title: '服务与支持',
 //     links: [
-//       { label: '共享网盘', href: 'http://10.3.146.11/share-network-disk' },
+//       { label: '共享网盘', href: 'https://i.sdzzmtb.cn/share-network-disk' },
 //       { label: '统一认证系统', href: 'http://10.3.146.13/' },
 //       { label: '媒体部OA', href: 'http://10.3.146.12/' },
 //     ],
@@ -157,7 +157,7 @@ export default defineComponent({
           <div class="copyright">
             <div class="items">
               <span style={copyrightStyles}>
-                Copyright © 2025
+                Copyright © 2025-2026
                 <img src={wesleyLogo} style={{ width: '48px' }} alt="wesley-logo" />
                 &amp; MTB. All Rights Reserved.
               </span>

@@ -5,7 +5,7 @@ export default defineComponent({
     return () => (
       <footer class="t-layout__footer wesley-footer">
         <div class="footer-text">
-          <span>Copyright © 2025</span>
+          <span>Copyright © 2025-2026 </span>
           <div style="width: 54px;margin: 0 3px 0 5px;">
             <svg
               xmlns="http://www.w3.org/2000/svg"

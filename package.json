@@ -18,12 +18,13 @@
     "test:gui": "vitest  --ui"
   },
   "dependencies": {
+    "@wesley-0808/rsa-verify": "^1.1.2",
     "nprogress": "^0.2.0",
     "path": "^0.12.7",
     "scrollreveal": "^4.0.9",
     "swiper": "^11.2.5",
-    "tdesign-icons-vue-next": "^0.3.4",
-    "tdesign-vue-next": "^1.11.3",
+    "tdesign-icons-vue-next": "^0.4.6",
+    "tdesign-vue-next": "^1.20.7",
     "vite-plugin-pwa": "^0.21.1",
     "vue": "^3.5.13",
     "vue-clipboard3": "^2.0.0",
